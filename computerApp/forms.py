@@ -1,5 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.shortcuts import render
+
 
 class AddMachineForm(forms.Form) :
     
@@ -7,6 +9,6 @@ class AddMachineForm(forms.Form) :
 
     def clean_nom(self):
         data = self.cleaned_data["nom"]
-        if len(data) != 6 :
-            raise ValidationError("Erreur de format pour le champ nom")
+        if len(data) > 10 :
+            return 'computerApp/error.html'
         return data

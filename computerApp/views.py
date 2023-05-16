@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from computerApp.models import Machine, Personnel
 from .forms import AddMachineForm
+from django.shortcuts import render
+
 
 def index(request) :
     #on recupere l'ensemble des machines de la database
@@ -42,6 +44,9 @@ def machine_add_form(request):
     if request.method == 'POST':
         form = AddMachineForm(request.POST or None)
         if form.is_valid():
+            nom= form.cleaned_data.get('nom')
+            if nom == 'computerApp/error.html':
+                return render(request,nom)
             new_machine = Machine(nom=form.cleaned_data['nom'])
             new_machine.save()
             return redirect('machines')
@@ -49,3 +54,4 @@ def machine_add_form(request):
         form = AddMachineForm()
         context = {'form': form}
         return render(request, 'computerApp/machine_add.html', context)
+
