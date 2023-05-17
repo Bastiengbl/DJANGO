@@ -11,4 +11,5 @@ class AddMachineForm(forms.Form) :
         data = self.cleaned_data["nom"]
         if len(data) > 10 :
             return 'computerApp/error.html'
+            print(forms.error)
         return data

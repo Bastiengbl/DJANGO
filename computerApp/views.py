@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from computerApp.models import Machine, Personnel
 from .forms import AddMachineForm
 from django.shortcuts import render
+from django.http import JsonResponse
 
 
 def index(request) :
@@ -41,11 +42,14 @@ def personne_detail_view(request, pk):
 #formulaire
 
 def machine_add_form(request):
+    code_erreur = int
     if request.method == 'POST':
         form = AddMachineForm(request.POST or None)
         if form.is_valid():
             nom= form.cleaned_data.get('nom')
             if nom == 'computerApp/error.html':
+                code_erreur= 1
+                return JsonResponse({'code_erreur': code_erreur})
                 return render(request,nom)
             new_machine = Machine(nom=form.cleaned_data['nom'])
             new_machine.save()
@@ -55,3 +59,5 @@ def machine_add_form(request):
         context = {'form': form}
         return render(request, 'computerApp/machine_add.html', context)
 
+
+    
