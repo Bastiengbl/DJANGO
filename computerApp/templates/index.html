@@ -15,22 +15,26 @@
     <header>
         
 
-    </header>
+    
 
-    <body>
+    
          <!--ON AJOUTE UNE IMAGE DEPUIS LES STATICS-->
         {% load static %} 
-        <a href="{% url 'index' %}"><img src="{% static 'computerApp/images/rtdev.png' %}" class="img-fluid" alt="logo" style="width:1000px"></a>
+        
         {% block menu %} 
             
-            <ul id="menu"></ul>
-            <nav class="nav nav-pills nav-justified">
-                <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
-                <a class="nav-link active" aria-current="page" href="{% url 'machines' %}">Machines</a>
-                <a class="nav-link active" aria-current="page" href="{% url 'personnes' %}">Personnes</a>
-               
-            </nav>
-            </ul>
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="{% url 'index' %}"><img src="{% static 'computerApp/images/rtdev.png' %}" class="img-fluid" alt="logo" style="width:150px"></a>
+                <div class="navbar">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'machines' %}">Machines</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'personnes' %}">Personnes</a>
+                </div>
+            </li>    
+        </ul>
+    </header>
+    <body>
         {% endblock %}
 
         
@@ -46,8 +50,9 @@
                 </p>
             {% endfor %}
         {%else %} 
-            Pas de machines.
+            <p>Pas de machines.</p>
         {% endif %} 
         {% endblock %} 
+        qsdqsdqsqsq
     </body>
 </html>

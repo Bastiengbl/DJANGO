@@ -42,22 +42,21 @@ def personne_detail_view(request, pk):
 #formulaire
 
 def machine_add_form(request):
-    code_erreur = int
     if request.method == 'POST':
         form = AddMachineForm(request.POST or None)
         if form.is_valid():
             nom= form.cleaned_data.get('nom')
-            if nom == 'computerApp/error.html':
-                code_erreur= 1
-                return JsonResponse({'code_erreur': code_erreur})
+            if nom == 'computerApp/machine_add.html':
+                
                 return render(request,nom)
-            new_machine = Machine(nom=form.cleaned_data['nom'])
-            new_machine.save()
-            return redirect('machines')
+            else:
+                new_machine = Machine(nom=form.cleaned_data['nom'])
+                new_machine.save()
+                return redirect('machines')
+            
     else:
         form = AddMachineForm()
         context = {'form': form}
         return render(request, 'computerApp/machine_add.html', context)
 
 
-    

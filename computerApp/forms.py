@@ -10,6 +10,7 @@ class AddMachineForm(forms.Form) :
     def clean_nom(self):
         data = self.cleaned_data["nom"]
         if len(data) > 10 :
-            return 'computerApp/error.html'
-            print(forms.error)
+            
+            return 'computerApp/machine_add.html'
+           
         return data
