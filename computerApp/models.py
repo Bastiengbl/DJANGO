@@ -10,7 +10,7 @@ class Machine(models.Model):
             )
 
     id = models.AutoField(primary_key= True, editable=False)
-    nom = models.CharField(max_length=6)
+    nom = models.CharField(max_length=10)
     maintenanceDate = models.DateField(default = datetime.now())
     mach = models.CharField(max_length=32, choices=TYPE, default='PC')
     IP = models.GenericIPAddressField(protocol='both', default='192.168.0.1')

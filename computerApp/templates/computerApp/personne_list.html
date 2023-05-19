@@ -5,7 +5,7 @@
     <ul>
         {% for personnel in personnes %} 
         <li>
-            <a href="{% url 'personne-detail' personnel.socialsecurity %}">
+            <a href="{% url 'personne-detail' personne.socialsecurity %}">
             {{ personnel.socialsecurity }} - ({{ personnel.nom}})
                     
         </li>
@@ -14,4 +14,7 @@
     {% else %} 
         <p>Il n'y a pas de Personnel.</p>
     {% endif %} 
+    <div class="ajout">
+        <a class="nav-link active" aria-current="page" href="{% url 'add-personne' %}">Ajouter du Personnel</a>
+</div>
 {% endblock %} 

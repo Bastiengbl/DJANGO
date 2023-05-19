@@ -29,30 +29,26 @@
                 <div class="navbar">
                     <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                     <a class="nav-link active" aria-current="page" href="{% url 'machines' %}">Machines</a>
-                    <a class="nav-link active" aria-current="page" href="{% url 'personnes' %}">Personnes</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'personnes' %}">Personnel</a>
                 </div>
             </li>    
         </ul>
+        {% endblock %}
     </header>
     <body>
+        
+        {% block content %}    
+            <p class="presentation"> Bienvenue sur le site de R&T Development. Nous sommes une PME d'une vingtaine d'employés dont le coeur de métier est la prestation de services dans le réseau embarqué pour le spatial.</br>
+                Ici, vous pourrez administrer(visualiser, ajouter, supprimer) facilement les machines et les infrastructures de l'entreprise.</br>
+                Vous pourrez également connaître le propriétaire de la machine, mais aussi savoir quelles mises à jour ont été effectuées.</br> 
+                Notre feature principale est la création de fichiers de configuration pour nos serveurs.(Apache, DHCP,..)</br>
+                Vous pouvez dès à présent prendre en main le site via le menu en haut de la page.
+            </p>
         {% endblock %}
-
         
        
         
 
         
-        {% block content %}
-         {% if machines %}
-            {% for machine in machines %}
-                <p>
-                    <b> {{machine.id}} </b> {{machine.nom}}
-                </p>
-            {% endfor %}
-        {%else %} 
-            <p>Pas de machines.</p>
-        {% endif %} 
-        {% endblock %} 
-        qsdqsdqsqsq
-    </body>
+       
 </html>

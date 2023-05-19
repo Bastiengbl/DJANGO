@@ -3,10 +3,8 @@
 <div class="forms">
     <form method="post">
     {% csrf_token %} 
-
     {{ form.nom }}
     <input type="submit" value="Submit">
     </form>
 </div>
 {% endblock %}
-

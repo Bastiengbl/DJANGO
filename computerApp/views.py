@@ -1,8 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from computerApp.models import Machine, Personnel
-from .forms import AddMachineForm
+from .forms import AddMachineForm, AddPersonneForm
 from django.shortcuts import render
-from django.http import JsonResponse
 
 
 def index(request) :
@@ -59,4 +58,18 @@ def machine_add_form(request):
         context = {'form': form}
         return render(request, 'computerApp/machine_add.html', context)
 
-
+def personne_add_form(request):
+    if request.method == 'POST':
+        form = AddPersonneForm(request.POST or None)
+        if form.is_valid():
+            nom=form.cleaned_data.get('nom')
+            if nom == 'computerApp/personne_add.html':
+                return render(request, nom)
+            else:
+                new_personne = personne(nom=form.cleaned_data['nom'])
+                new_personne.save()
+                return redirect('personnes')
+    else:
+        form = AddMachineForm()
+        context = {'form': form}
+        return render(request, 'computerApp/personne_add.html', context)

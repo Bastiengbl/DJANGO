@@ -1,15 +1,31 @@
-body{
-    background-color: rgb(221, 247, 228);
+@font-face {
+    font-family: 'Spartan League';
+    src: url('../fonts/LeagueSpartan-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+        font-family: 'Bookman Old Style';
+        src: url('../fonts/BOOKOS.TTF') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}
     
+body {
+    font-family: 'Spartan League', sans-serif;
+}
+    
+
+header{
+    height: 100px;
+    font-family: 'Spartan League', sans-serif;
+
 }
 
 .img-fluid{
 display: flex;
 margin: auto;
 width: 300px;
-
-}
-.nav{
 
 }
 
@@ -19,3 +35,88 @@ margin:auto;
 display:flex;
 justify-content: space-around;
 }
+
+
+
+/* CSS POUR LES MENUS */
+.nav-link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+.nav-link:hover {
+    background-color: #45a049;
+}
+.presentation{
+    font-family: 'Bookman Old Style', sans-serif; 
+    text-align: center;
+
+}
+.nav-link:active {
+    background-color: #3e8e41;
+  }
+
+
+
+
+/* CSS POUR LES AJOUTS(machines, personnel) */
+.ajout {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: fit-content;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+.ajout .nav-link {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.ajout .nav-link:hover {
+    background-color: #45a049;
+}
+  
+.ajout .nav-link:active {
+    background-color: #3e8e41;
+}
+
+
+
+
+/*CSS POUR LES FORMULAIRES */
+.forms {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .forms form {
+    margin-top: 10px;
+  }
+  
+  .forms input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .forms input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  
