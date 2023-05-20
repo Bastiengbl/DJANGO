@@ -84,10 +84,14 @@ def personne_add_form(request):
 
 def login_view(request):
     context={}
+    code = True
     return render(request, 'registration/login.html', context)
 
+
+
 def logged_out(request):
-    context={}
+    code = False
     logout(request)
-    return render(request, 'registration/logged_out.html', context)
-    
+    return redirect('index')
+
+
