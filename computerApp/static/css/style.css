@@ -48,16 +48,14 @@ justify-content: space-around;
     text-decoration: none;
   }
 .nav-link:hover {
-    background-color: #45a049;
+    background-color: #d8d7d7;
 }
 .presentation{
     font-family: 'Bookman Old Style', sans-serif; 
     text-align: center;
 
 }
-.nav-link:active {
-    background-color: #3e8e41;
-  }
+
 
 
 
