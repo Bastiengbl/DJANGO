@@ -27,8 +27,8 @@ class Personnel(models.Model):
         ('Team_Leader', ('Team_Leader - guides and leads a group of devs')),
 
     )
-    socialsecurity = models.CharField(primary_key=True, max_length=15, editable=True)
-    nom = models.CharField(max_length=20)
+    socialsecurity = models.CharField(primary_key=True, max_length=13, editable=True)
+    nom = models.CharField(max_length=10)
     prenom = models.CharField(max_length=20)
 
     def __str__(self):

@@ -1,21 +1,22 @@
 {% extends "index.html" %} 
+
 {% block content %} 
     <h1> Liste du personnel</h1>
     
     {% if personnes %} 
     <ul>
-        {% for personnel in personnes %} 
+        {% for personne in personnes %} 
         <li>
-            <a href="{% url 'personne-detail' personne.socialsecurity %}">
+            <a href="{% url 'personne-detail' personnel.socialsecurity %}"></a>
             {{ personnel.socialsecurity }} - ({{ personnel.nom}})
                     
         </li>
-    {% endfor %} 
+        {% endfor %} 
     </ul>
     {% else %} 
         <p>Il n'y a pas de Personnel.</p>
     {% endif %} 
     <div class="ajout">
         <a class="nav-link active" aria-current="page" href="{% url 'add-personne' %}">Ajouter du Personnel</a>
-</div>
+    </div>
 {% endblock %} 

@@ -92,29 +92,87 @@ justify-content: space-around;
 
 /*CSS POUR LES FORMULAIRES */
 .forms {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 20px;
-    width: 300px;
-    margin: 0 auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .forms form {
-    margin-top: 10px;
-  }
-  
-  .forms input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .forms input[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 20px;
+  width: 300px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.forms form {
+  margin-top: 10px;
+}
+
+.forms input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.forms input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.forms label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.forms input[type="text"],
+.forms input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.forms br {
+  display: none;
+}
+
+
+/* CONFIGS DES SERVEURS */
+
+.configs {
+  display: flex;
+  flex-direction: column;
+}
+
+.configs form {
+  display: none;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.configs button {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #e8f1ff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.configs button:focus {
+  outline: none;
+}
+
+.hide {
+  display: none;
+}

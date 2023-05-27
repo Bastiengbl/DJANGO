@@ -10,5 +10,7 @@ urlpatterns = [
     path('add-personne', views.personne_add_form, name='add-personne'),
     path('login/', views.login_view, name='login'),
     path('logged_out/', views.logged_out, name='logged_out'),
+    path('del-machine/', views.del_machine, name='del-machine' ),
+    path('questionnaire/', views.questionnaire, name='questionnaire'),
     
 ]

@@ -1,16 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from computerApp.models import Machine, Personnel
-from .forms import AddMachineForm, AddPersonneForm
+from .forms import AddMachineForm, AddPersonneForm, DelMachineForm
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.urls import reverse
+import logging
+from django.http import HttpResponse
+from .forms import QuestionForm
 
 
 def index(request) :
     #on recupere l'ensemble des machines de la database
     machines = Machine.objects.all()
-    
+    code = True
     #que l'on passe en parametre de la page html via la syntaxe suivante
     context = {
         'machines' : machines,
@@ -69,29 +72,45 @@ def personne_add_form(request):
     if request.method == 'POST':
         form = AddPersonneForm(request.POST or None)
         if form.is_valid():
-            nom=form.cleaned_data.get('nom')
-            if nom == 'computerApp/personne_add.html':
-                return render(request, nom)
-            else:
-                new_personne = personne(nom=form.cleaned_data['nom'])
-                new_personne.save()
-                return redirect('personnes')
+            new_personne = Personnel(   
+                            nom=form.cleaned_data.get('nom'),
+                            socialsecurity=form.cleaned_data.get('socialsecurity'))
+            new_personne.save()
+        return redirect('personnes')
     else:
-        form = AddMachineForm()
+        form = AddPersonneForm()
         context = {'form': form}
         return render(request, 'computerApp/personne_add.html', context)
 
-
 def login_view(request):
     context={}
-    code = True
     return render(request, 'registration/login.html', context)
 
-
-
 def logged_out(request):
-    code = False
     logout(request)
     return redirect('index')
 
+@login_required
+def del_machine(request):
+    if request.method == 'POST':
+        form=DelMachineForm(request.POST or None)
+        if form.is_valid():
+            selected_machine = form.cleaned_data['selected_machine']
+            Machine.objects.filter(pk__in=selected_machine).delete()
+        return redirect('machines')
 
+
+
+
+
+
+
+def questionnaire(request):
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            # Traitez les données du formulaire et effectuez les actions nécessaires
+            return render(request, 'computerApp/result.html', {'question1': question1, 'question2': question2})
+    else:
+        form = QuestionForm()
+    return render(request, 'computerApp/questionnaire.html', {'form': form, 'show_form': False})

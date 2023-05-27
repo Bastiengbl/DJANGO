@@ -49,19 +49,52 @@
         {% endblock %}
     </header>
     <body>
-        
-        {% block content %}    
-            <p class="presentation"> Bienvenue sur le site de R&T Development. Nous sommes une PME d'une vingtaine d'employés dont le coeur de métier est la prestation de services dans le réseau embarqué pour le spatial.</br>
-                Ici, vous pourrez administrer(visualiser, ajouter, supprimer) facilement les machines et les infrastructures de l'entreprise.</br>
-                Vous pourrez également connaître le propriétaire de la machine, mais aussi savoir quelles mises à jour ont été effectuées.</br> 
-                Notre feature principale est la création de fichiers de configuration pour nos serveurs.(Apache, DHCP,..)</br>
-                Vous pouvez dès à présent prendre en main le site via le menu en haut de la page.
-            </p>
-        {% endblock %}
-           
-            
-        
+      
+{% block content %}
+<div id="presentation" class="presentation">Vous trouverez ici les formulaires à remplir afin d'obtenir des fichiers de configuration pour vos serveurs.</div>
+<div class="configs">
+  <div class="box">
+    <form id="form-apache" method="post" {% if not show_form %}style="display: none;"{% endif %}>  
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Envoyer</button>
+    </form>
+    <div class="button-group">
+      <button onclick="toggleForm('form-apache')">Formulaire serveur Apache</button>
+    </div>
+  </div>
+  <div class="box">
+    <form id="form-dhcp" method="post" {% if not show_form %}style="display: none;"{% endif %}>  
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Envoyer</button>
+    </form>
+    <div class="button-group">
+      <button onclick="toggleForm('form-dhcp')">Formulaire serveur DHCP</button>
+    </div>
+  </div>
+</div>
 
-        
-       
-</html>
+<script>
+function toggleForm(formId) {
+  var forms = document.querySelectorAll('form');
+  for (var i = 0; i < forms.length; i++) {
+    if (forms[i].id === formId) {
+      forms[i].style.display = (forms[i].style.display === 'none') ? 'block' : 'none';
+    } else {
+      forms[i].style.display = 'none';
+    }
+  }
+
+  var buttons = document.querySelectorAll('.configs button');
+  for (var j = 0; j < buttons.length; j++) {
+    if (buttons[j].getAttribute('onclick') !== 'toggleForm("' + formId + '")') {
+      buttons[j].classList.toggle('hide');
+    }
+  }
+
+  var presentation = document.getElementById('presentation');
+  presentation.style.display = 'none';
+}
+</script>
+{% endblock %}

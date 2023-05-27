@@ -3,7 +3,8 @@
 <div class="forms">
     <form method="post">
     {% csrf_token %} 
-    {{ form.nom }}
+    {{ form.nom }} 
+    {{ form.socialsecurity}}
     <input type="submit" value="Submit">
     </form>
 </div>

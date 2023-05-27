@@ -1,22 +1,29 @@
 {% extends "index.html" %} 
+
 {% block content %} 
     <h1> Liste des machines</h1>
     
 
     {% if machines %} 
-    <ul>
-        {% for machine in machines %} 
-        <li>
-            <a href="{% url 'machine-detail' machine.id %}">
-            {{ machine.id }} - ({{ machine.nom}})
-        </li>
-    {% endfor %} 
-    </ul>
+    <form action="{% url 'del-machine' %}" method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for machine in machines %} 
+            <li>
+                <input class="mr-2" type="checkbox" name="selected_machine" value="{{ machine.id }}">
+                <a href="{% url 'machine-detail' machine.id %}">
+                {{ machine.id }} - ({{ machine.nom}})
+            </li>
+            {% endfor %} 
+        </ul>
+    
     {% else %} 
         <p>Il n'y a pas de machines.</p>
     {% endif %} 
     <div class="ajout">
         <a class="nav-link active" aria-current="page" href="{% url 'add-machine' %}">Ajouter une machine</a>
+        <button type="submit" class="nav-link active" aria-current="page">Supprimer les machines</button>
+    </form>   
     </div>
 {% endblock %} 
 
