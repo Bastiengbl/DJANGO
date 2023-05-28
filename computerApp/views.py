@@ -104,13 +104,24 @@ def del_machine(request):
 
 
 
-
+@login_required
 def questionnaire(request):
     if request.method == 'POST':
         form = QuestionForm(request.POST)
         if form.is_valid():
+            question1 = form.cleaned_data['question1']
+            question2 = form.cleaned_data['question2']
+            question3 = form.cleaned_data['question3']
+            question4 = form.cleaned_data['question4']
+            question5 = form.cleaned_data['question5']
+            question6 = form.cleaned_data['question6']
+            question7 = form.cleaned_data['question7']
             # Traitez les données du formulaire et effectuez les actions nécessaires
-            return render(request, 'computerApp/result.html', {'question1': question1, 'question2': question2})
+            return render(request, 'computerApp/result.html', {'question1': question1, 'question2': question2, 'question3': question3, 'question4': question4, 'question5': question5, 'question6': question6, 'question7': question7})
     else:
         form = QuestionForm()
+    
     return render(request, 'computerApp/questionnaire.html', {'form': form, 'show_form': False})
+
+
+

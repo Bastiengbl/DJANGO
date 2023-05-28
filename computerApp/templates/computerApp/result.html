@@ -49,11 +49,53 @@
         {% endblock %}
     </header>
     <body>
-        {% block content %}    
-            <p>Réponses :</p>
-            <p>Question 1 : {{ question1 }}</p>
-            <p>Question 2 : {{ question2 }}</p>
-            <!-- Ajoutez ici l'affichage des autres variables de question si nécessaire -->
+        {% block content %}
+        <p style="text-align: center";> Veuillez renseigner le contenu suivant dans votre fichier dhcpd.conf  </p>
+        <div class="conf-box">
+            <h3 style="text-align: center";>Fichier de configuration de votre serveur DHCP</h3>
+            <div class="card2">
+                
+                    <p style="text-align: left">
+                        <pre id="myInput">
+                        # Déclaration de votre réseau:<br>
+                        subnet {{ question1 }} netmask {{ question2 }} {<br>
+                               range     {{ question3 }} {{ question4 }}; # Plage IP<br>
+                               option domain-name-servers      {{ question6 }}; # DNS<br>
+                               option routers                  {{ question4 }}; # Passerelle<br>
+                               option broadcast-address        {{ question7 }}; # diffusion   <br> 
+                            }
+                        </pre>
+                    </p>
+                    <button class="button-copy" onclick="copyText('myInput')">Copy text</button>    
+            </div>
+          </div>
+
+          
+          
+          <script>
+          function copyText(elementId) {
+            var textElement = document.getElementById(elementId);
+            var text = textElement.innerText;
+          
+            // Créer un élément temporaire pour la copie du texte
+            var tempInput = document.createElement('textarea');
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = 0;
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+          
+            // Sélectionner et copier le texte
+            tempInput.select();
+            document.execCommand('copy');
+          
+            // Supprimer l'élément temporaire
+            document.body.removeChild(tempInput);
+          }
+          </script>
+          
+
+
+            
         {% endblock %}
     </body>
 </html>

@@ -56,6 +56,14 @@ justify-content: space-around;
 
 }
 
+.user_info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user_info li {
+  margin-bottom: 10px;
+}
 
 
 
@@ -173,6 +181,67 @@ justify-content: space-around;
   outline: none;
 }
 
+.button-group{
+  padding: 5%
+}
+
 .hide {
   display: none;
 }
+
+/* box conf résultat */
+.conf-box {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.conf-box h3 {
+  margin-top: 0;
+}
+
+.conf-box pre {
+  text-align: left;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1;
+}
+
+.card{
+  max-width: 600px;
+  display: inline-block;
+  text-align: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.card2{
+  max-width: 800px;
+  display: inline-block;
+  text-align: left;
+ 
+  
+}
+
+.button-copy {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-copy:hover {
+  background-color: #45a049;
+}
+
+.button-copy:active {
+  background-color: #3c893d;
+}
+

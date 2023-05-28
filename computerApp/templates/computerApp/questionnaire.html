@@ -51,50 +51,53 @@
     <body>
       
 {% block content %}
-<div id="presentation" class="presentation">Vous trouverez ici les formulaires à remplir afin d'obtenir des fichiers de configuration pour vos serveurs.</div>
-<div class="configs">
-  <div class="box">
+<div id="presentation" class="presentation">
+  Vous trouverez ici les formulaires à remplir afin d'obtenir des fichiers de configuration pour vos serveurs.
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Serveur DHCP</h5>
+    <p class="card-text">Remplissez le formulaire ci-dessous pour générer le fichier de configuration de votre serveur DHCP.</p>
+    <div class="button-group">
+      <button onclick="toggleForm('form-apache')" class="btn btn-primary">Afficher le formulaire</button>
+    </div>
     <form id="form-apache" method="post" {% if not show_form %}style="display: none;"{% endif %}>  
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Envoyer</button>
-    </form>
-    <div class="button-group">
-      <button onclick="toggleForm('form-apache')">Formulaire serveur Apache</button>
-    </div>
-  </div>
-  <div class="box">
-    <form id="form-dhcp" method="post" {% if not show_form %}style="display: none;"{% endif %}>  
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit">Envoyer</button>
-    </form>
-    <div class="button-group">
-      <button onclick="toggleForm('form-dhcp')">Formulaire serveur DHCP</button>
-    </div>
+      <button class="btn btn-primary" type="submit">Envoyer</button>
+    </form>     
   </div>
 </div>
 
+
+  
+
+<!--code javascript récupéré qui facilite la tache
+Il permet de n'afficher que certains éléments de la page selon des contraintes-->
 <script>
-function toggleForm(formId) {
-  var forms = document.querySelectorAll('form');
-  for (var i = 0; i < forms.length; i++) {
-    if (forms[i].id === formId) {
-      forms[i].style.display = (forms[i].style.display === 'none') ? 'block' : 'none';
-    } else {
-      forms[i].style.display = 'none';
+  function toggleForm(formId) {
+    var forms = document.querySelectorAll('form');
+    for (var i = 0; i < forms.length; i++) {
+      if (forms[i].id === formId) {
+        forms[i].style.display = (forms[i].style.display === 'none') ? 'block' : 'none';
+      } else {
+        forms[i].style.display = 'none';
+      }
     }
-  }
-
-  var buttons = document.querySelectorAll('.configs button');
-  for (var j = 0; j < buttons.length; j++) {
-    if (buttons[j].getAttribute('onclick') !== 'toggleForm("' + formId + '")') {
-      buttons[j].classList.toggle('hide');
+  
+    var buttons = document.querySelectorAll('.configs button');
+    for (var j = 0; j < buttons.length; j++) {
+      if (buttons[j].getAttribute('onclick') !== 'toggleForm("' + formId + '")') {
+        buttons[j].classList.toggle('hide');
+      }
     }
+  
+    var presentation = document.getElementById('presentation');
+    presentation.style.display = 'none';
   }
-
-  var presentation = document.getElementById('presentation');
-  presentation.style.display = 'none';
-}
-</script>
+  
+  
+  </script>
+  
 {% endblock %}

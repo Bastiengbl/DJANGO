@@ -44,8 +44,14 @@ class DelMachineForm(forms.Form) :
     )
 
 
-
+#formulaire pour le serveur DHCP
 class QuestionForm(forms.Form):
-    question1 = forms.CharField(label='Question fg', max_length=100)
-    question2 = forms.CharField(label='Question 2', max_length=100)
+    question1 = forms.CharField(label='Adresse de réseau:', max_length=100)
+    question2 = forms.CharField(label='masque de réseau:', max_length=100)
+    question3 = forms.CharField(label='Début de la plage:', max_length=100)
+    question4 = forms.CharField(label='Fin de la plage  :', max_length=100)
+    question5 = forms.CharField(label='Passerelle:', max_length=100)
+    question6 = forms.CharField(label='Serveur DNS:', max_length=100)
+    question7 = forms.CharField(label='Adresse de diffusion:', max_length=100)
+
     # Ajoutez ici autant de champs de question que nécessaire
