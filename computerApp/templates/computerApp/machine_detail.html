@@ -1,9 +1,37 @@
 {% extends "index.html" %} 
 
+
+   
+
 {% block content %} 
-    <h1>Nom: {{ machine.name }}</h1>
-    <p><strong>ID : </strong> {{ machine.id }} </a></p>
-    <p><strong>Date de maintenance : </strong> {{ machine.maintenanceDate}}</p>
-    <p><strong>Machine : </strong> {{ machine.mach }}</p>
-    <p><strong>IP : </strong> {{ machine.IP }}</p>
-{% endblock %} 
+<ol class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Nom:</div>
+        {{ machine.nom }}
+      </div>
+      
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">ID :</div>
+        {{ machine.id }}
+      </div>
+      
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Date de maintenance :</div>
+        {{ machine.maintenanceDate}}
+      </div>
+      
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">IP :</div>
+          {{ machine.IP }}
+        </div>
+        
+      </li>
+  </ol>
+  {% endblock %} 

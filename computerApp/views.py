@@ -20,7 +20,7 @@ def index(request) :
     }
 
     return render(request, 'index.html', context)
-@login_required
+
 def machine_list_view(request) :
     machines = Machine.objects.all()
     context={'machines': machines}
@@ -34,7 +34,7 @@ def personne_list_view(request) :
     return render(request, 'computerApp/personne_list.html',
     context)
 
-@login_required
+
 def machine_detail_view(request, pk):
     machine = get_object_or_404(Machine, id=pk)
     context={'machine': machine}

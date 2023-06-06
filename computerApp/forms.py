@@ -8,6 +8,7 @@ class AddMachineForm(forms.Form) :
     
     nom = forms.CharField(required=True, label='Nom de la machine')
     IP = forms.GenericIPAddressField(required=True, label='IP de la machine')
+    mach = forms.CharField(required=True, label='Type de machine')
 
     def clean_nom(self):
         data = self.cleaned_data["nom"]
@@ -19,6 +20,12 @@ class AddMachineForm(forms.Form) :
         data = self.cleaned_data["IP"]
         
         if len(data) > 15 :
+            raise ValidationError('erreur de champ')
+        return data
+    def clean_mach(self):
+        data = self.cleaned_data["mach"]
+
+        if len(data) > 10 :
             raise ValidationError('erreur de champ')
         return data
 

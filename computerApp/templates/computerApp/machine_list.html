@@ -1,7 +1,7 @@
 {% extends "index.html" %} 
 
 {% block content %} 
-    <h1> Liste des machines</h1>
+    <h1 class="titre_machines"> Liste des machines</h1>
     
 
     {% if machines %} 
@@ -12,7 +12,7 @@
             <li>
                 <input class="mr-2" type="checkbox" name="selected_machine" value="{{ machine.id }}">
                 <a href="{% url 'machine-detail' machine.id %}">
-                {{ machine.id }} - ({{ machine.nom}})
+                {{ machine.nom}}
             </li>
             {% endfor %} 
         </ul>
